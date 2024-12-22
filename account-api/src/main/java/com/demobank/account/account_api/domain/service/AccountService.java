@@ -1,15 +1,19 @@
 package com.demobank.account.account_api.domain.service;
 
 import java.math.BigDecimal;
-import java.util.UUID;
+import java.util.List;
+
+import com.demobank.account.account_api.domain.model.Account;
 
 public interface AccountService {
 
-    UUID create(UUID customerId);
+    Long create(long customerId);
 
-    void deposit(UUID accountId, BigDecimal amount);
+    void deposit(long accountId, BigDecimal amount);
 
-    void withdraw(UUID accountId, BigDecimal amount);
+    void withdraw(long accountId, BigDecimal amount);
+
+    List<Account> retrieveAccountList(long customerId);
 
 
 } 

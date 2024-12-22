@@ -1,15 +1,22 @@
 package com.demobank.account.account_api.domain.command.handler;
 
-import java.util.UUID;
+import org.springframework.stereotype.Component;
 
 import com.demobank.account.account_api.domain.command.CreateCustomer;
+import com.demobank.account.account_api.domain.service.CustomerService;
 
-public class CreateCustomerCommandHandler implements CommandHandler<CreateCustomer, UUID> {
+import lombok.AllArgsConstructor;
+
+@Component
+@AllArgsConstructor
+public class CreateCustomerCommandHandler implements CommandHandler<CreateCustomer, Long> {
+
+    private CustomerService customerService;
 
     @Override
-    public UUID handle(CreateCustomer command) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'handle'");
+    public Long handle(CreateCustomer command) {
+
+        return customerService.create(command.getName(), command.getSurName());
     }
     
 }
