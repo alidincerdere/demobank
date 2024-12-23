@@ -11,7 +11,10 @@ import com.demobank.transaction.transaction_api.domain.model.TransactionType;
 import com.demobank.transaction.transaction_api.infra.rest.dto.request.TransactionRequestDto;
 import com.demobank.transaction.transaction_api.infra.rest.dto.response.TransactionResponseDto;
 
+import lombok.AllArgsConstructor;
+
 @RestController
+@AllArgsConstructor
 public class TransactionController implements TransactionOperations {
 
     private TransactionCommandHandler<ProcessTransaction, TransactionResponse> processHandler;

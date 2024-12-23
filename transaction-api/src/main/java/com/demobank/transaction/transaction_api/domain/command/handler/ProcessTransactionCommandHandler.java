@@ -24,7 +24,7 @@ public class ProcessTransactionCommandHandler
         TransactionResult transactionResult = transactionService.process(command.getAccountId(), command.getAmount(), command.getType());
 
         UUID transactionId = null;
-        if(transactionResult == TransactionResult.SUCCESS) {
+        if(TransactionResult.SUCCESS.equals(transactionResult)) {
             transactionId = transactionService.saveTransaction(command.getAccountId(), command.getAmount(), command.getType());
         }
 

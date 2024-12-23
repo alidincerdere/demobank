@@ -31,7 +31,7 @@ public class TransactionDataAdapter implements TransactionDataPort {
                 .transactionTypeCode(transaction.getType().ordinal())
                 .build();
         transactionEntity = transactionRepository.save(transactionEntity);
-        return transaction.getTransactionId();
+        return transactionEntity.getTransactionId();
     }
 
     @Override
