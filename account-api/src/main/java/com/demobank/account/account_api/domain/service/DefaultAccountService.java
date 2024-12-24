@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.demobank.account.account_api.domain.model.Account;
+import com.demobank.account.account_api.domain.model.AccountUpdateResult;
 import com.demobank.account.account_api.domain.port.AccountDataPort;
 
 import lombok.AllArgsConstructor;
@@ -24,13 +25,13 @@ public class DefaultAccountService implements AccountService{
     }
 
     @Override
-    public void deposit(long accountId, BigDecimal amount) {
+    public AccountUpdateResult deposit(long accountId, BigDecimal amount) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'deposit'");
     }
 
     @Override
-    public void withdraw(long accountId, BigDecimal amount) {
+    public AccountUpdateResult withdraw(long accountId, BigDecimal amount) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'withdraw'");
     }
