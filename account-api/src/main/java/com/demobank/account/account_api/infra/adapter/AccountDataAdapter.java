@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import com.demobank.account.account_api.domain.model.Account;
 import com.demobank.account.account_api.domain.port.AccountDataPort;
+import com.demobank.account.account_api.infra.persistence.entity.AccountEntity;
 import com.demobank.account.account_api.infra.persistence.repository.AccountRepository;
 
 import lombok.AllArgsConstructor;
@@ -21,8 +22,9 @@ public class AccountDataAdapter implements AccountDataPort {
 
     @Override
     public Account retrieveAccount(UUID accountId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'retrieveAccount'");
+
+        AccountEntity accountEntity = accountRepository.getReferenceById(accountId);
+        return modelMapper.map(accountEntity, Account.class);
     }
 
     @Override
@@ -30,6 +32,22 @@ public class AccountDataAdapter implements AccountDataPort {
 
         return accountRepository.findAllByCustomerId(customerId).stream().map(x -> modelMapper.map(x, Account.class))
                 .toList();
+    }
+
+    @Override
+    public UUID save(Account account) {
+
+        AccountEntity accountEntity;
+        
+        if(account.getAccountId() != null) {
+            //existing account
+            accountEntity = accountRepository.findById(account.getAccountId()).orElseThrow();
+            accountEntity.setAmount(account.getAmount());
+            
+        } else {
+            accountEntity = modelMapper.map(account, AccountEntity.class);
+        }
+        return accountRepository.save(accountEntity).getId();
     }
 
 }

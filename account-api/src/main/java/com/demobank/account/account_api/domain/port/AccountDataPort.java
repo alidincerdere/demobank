@@ -10,6 +10,8 @@ public interface AccountDataPort {
     Account retrieveAccount(UUID accountId);
 
     List<Account> retrieveAccountList(UUID customerId);
+
+    UUID save(Account account);
     
     
 }

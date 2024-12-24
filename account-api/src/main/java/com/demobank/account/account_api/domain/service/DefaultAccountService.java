@@ -21,20 +21,48 @@ public class DefaultAccountService implements AccountService{
 
     @Override
     public UUID create(UUID customerId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'create'");
+       
+        Account account = Account.builder().build();
+        return accountDataPort.save(account);
     }
 
     @Override
     public AccountUpdateResult deposit(UUID accountId, BigDecimal amount) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deposit'");
+        AccountUpdateResult result;
+        Account account = accountDataPort.retrieveAccount(accountId);
+        if (account == null) {
+            result = AccountUpdateResult.ACCOUNT_NOT_FOUND; 
+        } else {
+            BigDecimal currentAmount = account.getAmount();
+            currentAmount.add(amount);
+            account.setAmount(currentAmount);
+            accountDataPort.save(account);
+            result = AccountUpdateResult.SUCCESS;
+
+        }
+        return result;
     }
 
     @Override
     public AccountUpdateResult withdraw(UUID accountId, BigDecimal amount) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'withdraw'");
+        AccountUpdateResult result;
+        Account account = accountDataPort.retrieveAccount(accountId);
+        if (account == null) {
+            result = AccountUpdateResult.ACCOUNT_NOT_FOUND; 
+        } else {
+            if(account.getAmount().compareTo(amount)<1) {
+                result = AccountUpdateResult.NOT_ENOUGH_FUNDS;
+            } else {
+                BigDecimal currentAmount = account.getAmount();
+                currentAmount.subtract(amount);
+                account.setAmount(currentAmount);
+                accountDataPort.save(account);
+                result = AccountUpdateResult.SUCCESS;
+            }
+        }
+     
+     
+        return result;
     }
 
     @Override
