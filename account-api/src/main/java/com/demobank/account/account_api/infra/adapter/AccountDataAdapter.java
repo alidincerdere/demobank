@@ -1,6 +1,7 @@
 package com.demobank.account.account_api.infra.adapter;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
@@ -19,13 +20,13 @@ public class AccountDataAdapter implements AccountDataPort {
     private ModelMapper modelMapper;
 
     @Override
-    public Account retrieveAccount(long accountId) {
+    public Account retrieveAccount(UUID accountId) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'retrieveAccount'");
     }
 
     @Override
-    public List<Account> retrieveAccountList(long customerId) {
+    public List<Account> retrieveAccountList(UUID customerId) {
 
         return accountRepository.findAllByCustomerId(customerId).stream().map(x -> modelMapper.map(x, Account.class))
                 .toList();

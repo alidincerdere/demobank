@@ -1,5 +1,7 @@
 package com.demobank.account.account_api.infra.rest;
 
+import java.util.UUID;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,12 +20,12 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class CustomerController implements CustomerOperations {
 
-    private CommandHandler<CreateCustomer, Long> createCustomerCommandHandler;
+    private CommandHandler<CreateCustomer, UUID> createCustomerCommandHandler;
     private QueryHandler<CustomerQuery, CustomerQueryResponse> customerQueryHandler;
     private ModelMapper modelMapper;
 
     @Override
-    public ResponseEntity<Long> create(CustomerCreateRequestDto customerCreateRequestDto) {
+    public ResponseEntity<UUID> create(CustomerCreateRequestDto customerCreateRequestDto) {
 
         return ResponseEntity.ok().body(
                 createCustomerCommandHandler.handle(modelMapper.map(customerCreateRequestDto, CreateCustomer.class)));
@@ -31,7 +33,7 @@ public class CustomerController implements CustomerOperations {
     }
 
     @Override
-    public ResponseEntity<CustomerDto> retrieve(Long id) {
+    public ResponseEntity<CustomerDto> retrieve(UUID id) {
 
         return ResponseEntity.ok().body(modelMapper
                 .map(customerQueryHandler.handle(CustomerQuery.builder().id(id).build()), CustomerDto.class));

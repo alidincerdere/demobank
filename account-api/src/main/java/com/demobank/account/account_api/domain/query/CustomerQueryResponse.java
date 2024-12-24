@@ -2,6 +2,7 @@ package com.demobank.account.account_api.domain.query;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.UUID;
 
 import com.demobank.account.account_api.domain.model.Account;
 
@@ -12,7 +13,7 @@ import lombok.Data;
 @Builder
 public class CustomerQueryResponse implements QueryResponse {
     
-    private long customerId;
+    private UUID customerId;
     private String name;
     private String surName;
     private BigDecimal balance;

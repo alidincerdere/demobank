@@ -1,6 +1,7 @@
 package com.demobank.account.account_api.infra.adapter;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
@@ -20,7 +21,7 @@ public class CustomerDataAdapter implements CustomerDataPort{
     private ModelMapper modelMapper;
 
     @Override
-    public Customer retrieveUser(long customerId) {
+    public Customer retrieveUser(UUID customerId) {
 
         CustomerEntity customerEntity = repository.getReferenceById(customerId);
 
@@ -35,7 +36,7 @@ public class CustomerDataAdapter implements CustomerDataPort{
     }
 
     @Override
-    public long create(String name, String surName) {
+    public UUID create(String name, String surName) {
 
         return repository.save(CustomerEntity.builder().name(name).surName(surName).build()).getId();
     }

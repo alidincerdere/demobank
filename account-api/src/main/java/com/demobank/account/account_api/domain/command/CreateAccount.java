@@ -1,6 +1,7 @@
 package com.demobank.account.account_api.domain.command;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -9,6 +10,6 @@ import lombok.Getter;
 @Builder
 public class CreateAccount implements Command{
     
-    private long customerId;
+    private UUID customerId;
     private BigDecimal initialAmount;
 }

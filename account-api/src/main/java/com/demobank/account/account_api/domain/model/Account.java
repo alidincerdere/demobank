@@ -1,6 +1,7 @@
 package com.demobank.account.account_api.domain.model;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,8 +14,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Account {
 
-    private long accountId;
-    private long customerId;
+    private UUID accountId;
+    private UUID customerId;
     private BigDecimal amount;
     
 }

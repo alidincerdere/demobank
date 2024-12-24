@@ -1,5 +1,7 @@
 package com.demobank.account.account_api.domain.command.handler;
 
+import java.util.UUID;
+
 import org.springframework.stereotype.Component;
 
 import com.demobank.account.account_api.domain.command.CreateCustomer;
@@ -9,12 +11,12 @@ import lombok.AllArgsConstructor;
 
 @Component
 @AllArgsConstructor
-public class CreateCustomerCommandHandler implements CommandHandler<CreateCustomer, Long> {
+public class CreateCustomerCommandHandler implements CommandHandler<CreateCustomer, UUID> {
 
     private CustomerService customerService;
 
     @Override
-    public Long handle(CreateCustomer command) {
+    public UUID handle(CreateCustomer command) {
 
         return customerService.create(command.getName(), command.getSurName());
     }

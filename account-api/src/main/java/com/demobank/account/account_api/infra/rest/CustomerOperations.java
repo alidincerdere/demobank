@@ -1,5 +1,7 @@
 package com.demobank.account.account_api.infra.rest;
 
+import java.util.UUID;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,9 +15,9 @@ import com.demobank.account.account_api.infra.dto.response.CustomerDto;
 public interface CustomerOperations {
 
     @PostMapping
-    public ResponseEntity<Long> create(@RequestBody CustomerCreateRequestDto customerCreateRequestDto);
+    public ResponseEntity<UUID> create(@RequestBody CustomerCreateRequestDto customerCreateRequestDto);
 
     @GetMapping("/{id}")
-    public ResponseEntity<CustomerDto> retrieve(@PathVariable Long id);
+    public ResponseEntity<CustomerDto> retrieve(@PathVariable UUID id);
     
 }

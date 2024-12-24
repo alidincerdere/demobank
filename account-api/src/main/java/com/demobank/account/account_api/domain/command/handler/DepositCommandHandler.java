@@ -16,8 +16,9 @@ public class DepositCommandHandler implements CommandHandler<DepositCommand, Acc
 
     @Override
     public AccountUpdateResult handle(DepositCommand command) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'handle'");
+
+        return accountService.deposit(command.getAccountId(), command.getAmount());
+
     }
     
 }

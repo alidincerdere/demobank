@@ -1,5 +1,7 @@
 package com.demobank.account.account_api.domain.query;
 
+import java.util.UUID;
+
 import lombok.Builder;
 import lombok.Getter;
 
@@ -7,5 +9,5 @@ import lombok.Getter;
 @Builder
 public class CustomerQuery implements Query {
     
-    private long id;
+    private UUID id;
 }
