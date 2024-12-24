@@ -23,7 +23,7 @@ public class AccountEntity {
     
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    private UUID accountId;
     private UUID customerId;
     private BigDecimal amount;
 }

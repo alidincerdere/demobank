@@ -1,6 +1,7 @@
 package com.demobank.account.account_api.infra.dto.response;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 import lombok.Builder;
 import lombok.Data;
@@ -9,6 +10,6 @@ import lombok.Data;
 @Builder
 public class AccountDto {
     
-    private Long id;
+    private UUID id;
     private BigDecimal amount;
 }

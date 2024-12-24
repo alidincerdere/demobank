@@ -10,3 +10,8 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
 server:
   port: 8082
+
+
+account:
+  service:
+    api: http://account-api:8081

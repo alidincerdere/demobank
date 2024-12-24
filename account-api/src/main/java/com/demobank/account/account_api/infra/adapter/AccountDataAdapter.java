@@ -47,7 +47,7 @@ public class AccountDataAdapter implements AccountDataPort {
         } else {
             accountEntity = modelMapper.map(account, AccountEntity.class);
         }
-        return accountRepository.save(accountEntity).getId();
+        return accountRepository.save(accountEntity).getAccountId();
     }
 
 }
