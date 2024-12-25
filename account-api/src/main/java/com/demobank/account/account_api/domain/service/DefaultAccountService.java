@@ -22,7 +22,7 @@ public class DefaultAccountService implements AccountService{
     @Override
     public UUID create(UUID customerId) {
        
-        Account account = Account.builder().build();
+        Account account = Account.builder().amount(BigDecimal.ZERO).customerId(customerId).build();
         return accountDataPort.save(account);
     }
 
@@ -34,8 +34,8 @@ public class DefaultAccountService implements AccountService{
             result = AccountUpdateResult.ACCOUNT_NOT_FOUND; 
         } else {
             BigDecimal currentAmount = account.getAmount();
-            currentAmount.add(amount);
-            account.setAmount(currentAmount);
+            BigDecimal updatedAccount = currentAmount.add(amount);
+            account.setAmount(updatedAccount);
             accountDataPort.save(account);
             result = AccountUpdateResult.SUCCESS;
 

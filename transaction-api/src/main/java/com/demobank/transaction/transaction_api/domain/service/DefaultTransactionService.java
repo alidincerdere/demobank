@@ -7,9 +7,9 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 import com.demobank.transaction.transaction_api.domain.model.Transaction;
-import com.demobank.transaction.transaction_api.domain.model.TransactionResponse;
 import com.demobank.transaction.transaction_api.domain.model.TransactionResult;
 import com.demobank.transaction.transaction_api.domain.model.TransactionType;
+import com.demobank.transaction.transaction_api.domain.port.AccountServiceAccessPort;
 import com.demobank.transaction.transaction_api.domain.port.TransactionDataPort;
 
 import lombok.AllArgsConstructor;
@@ -19,14 +19,21 @@ import lombok.AllArgsConstructor;
 public class DefaultTransactionService implements TransactionService {
 
     private TransactionDataPort transactionDataPort;
+    private AccountServiceAccessPort accountServiceAccessPort;
 
     @Override
     public TransactionResult process(UUID accountId, BigDecimal amount, TransactionType type) {
 
         // update account balance
         // request to account service
+        TransactionResult result;
+        if(type.equals(TransactionType.DEPOSIT)) {
+            result = accountServiceAccessPort.deposit(accountId, amount);
+        } else {
+            result = accountServiceAccessPort.withdraw(accountId, amount);
+        }
 
-        return TransactionResult.SUCCESS;
+        return result;
 
     }
 
