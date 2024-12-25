@@ -74,3 +74,9 @@ if you apply withdraw more than the account amount you can see insufficient fund
 
 The solution has two different services built in hexagonal architecture.
 Infra and domain layers are separated. Controllers, DTOs, commands, queries, handlers, services, models, ports, adapters, Repositories and Entities are used.
+
+Transaction-api stores transactions and account-api stores customer and account data.
+Transaction-api and account-api communicates in docker network. 
+When a new account is created with a nonzero initial amount then a transaction request is sent from account-api to transaction-api. And when a transaciton is received by transaction-api then the amount and type is sent to account-api to update the balance/amount of that account. 
+
+When get custoemr request is sent to the account-api, the account-api sends request to transaction-api in order to get transaction list for that account. 
