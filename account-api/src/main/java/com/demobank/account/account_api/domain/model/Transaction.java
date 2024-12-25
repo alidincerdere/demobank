@@ -15,8 +15,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Transaction {
     
-    private UUID id;
+    private UUID transactionId;
     private BigDecimal amount;
-    private String type;
+    private String TransactionType;
     private LocalDateTime date;
 }
