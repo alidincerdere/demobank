@@ -1,11 +1,13 @@
 package com.demobank.account.account_api.infra.adapter;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
+import com.demobank.account.account_api.domain.exception.NoSuchAccountExistsException;
 import com.demobank.account.account_api.domain.model.Account;
 import com.demobank.account.account_api.domain.port.AccountDataPort;
 import com.demobank.account.account_api.infra.persistence.entity.AccountEntity;
@@ -23,8 +25,11 @@ public class AccountDataAdapter implements AccountDataPort {
     @Override
     public Account retrieveAccount(UUID accountId) {
 
-        AccountEntity accountEntity = accountRepository.getReferenceById(accountId);
-        return modelMapper.map(accountEntity, Account.class);
+        Optional<AccountEntity> optionalAccountEntity = accountRepository.findById(accountId);
+        if(optionalAccountEntity.isEmpty()) {
+            throw new NoSuchAccountExistsException(accountId.toString());
+        }
+        return modelMapper.map(optionalAccountEntity.get(), Account.class);
     }
 
     @Override

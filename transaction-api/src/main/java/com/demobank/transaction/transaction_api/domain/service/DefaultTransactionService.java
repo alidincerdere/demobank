@@ -14,9 +14,11 @@ import com.demobank.transaction.transaction_api.domain.port.AccountServiceAccess
 import com.demobank.transaction.transaction_api.domain.port.TransactionDataPort;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class DefaultTransactionService implements TransactionService {
 
     private TransactionDataPort transactionDataPort;
@@ -30,10 +32,13 @@ public class DefaultTransactionService implements TransactionService {
         TransactionResult result;
         if(type.equals(TransactionType.DEPOSIT)) {
             result = accountServiceAccessPort.deposit(accountId, amount);
+            
         } else {
             result = accountServiceAccessPort.withdraw(accountId, amount);
         }
 
+        log.info("Transaction result {}",result.toString());
+        
         return result;
 
     }

@@ -3,7 +3,6 @@ package com.demobank.account.account_api.domain.query.handler;
 import com.demobank.account.account_api.domain.query.CustomerQueryResponse;
 import com.demobank.account.account_api.domain.service.AccountService;
 import com.demobank.account.account_api.domain.service.CustomerService;
-import com.demobank.account.account_api.infra.dto.response.AccountDto;
 
 import lombok.AllArgsConstructor;
 
@@ -13,7 +12,6 @@ import java.util.List;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
-import com.demobank.account.account_api.domain.model.Account;
 import com.demobank.account.account_api.domain.model.Customer;
 import com.demobank.account.account_api.domain.model.Transaction;
 import com.demobank.account.account_api.domain.port.TransactionServicePort;
