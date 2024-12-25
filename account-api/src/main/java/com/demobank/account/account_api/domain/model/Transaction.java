@@ -1,7 +1,7 @@
-package com.demobank.account.account_api.infra.dto.response;
+package com.demobank.account.account_api.domain.model;
 
 import java.math.BigDecimal;
-import java.util.List;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 import lombok.AllArgsConstructor;
@@ -11,11 +11,12 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
-public class AccountDto {
+@AllArgsConstructor
+public class Transaction {
     
     private UUID id;
     private BigDecimal amount;
-    List<TransactionDto> transactionList;
+    private String type;
+    private LocalDateTime date;
 }

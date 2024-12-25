@@ -2,6 +2,7 @@ package com.demobank.transaction.transaction_api.domain.service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
@@ -45,6 +46,12 @@ public class DefaultTransactionService implements TransactionService {
         return transactionDataPort.saveTransaction(transaction);
 
     
+    }
+
+    @Override
+    public List<Transaction> getTransactionListByAccountId(UUID accountId) {
+
+        return transactionDataPort.retrieveAccountTransactions(accountId);
     }
 
 }

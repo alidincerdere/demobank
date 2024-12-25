@@ -1,6 +1,7 @@
 package com.demobank.transaction.transaction_api.infra.persistence.entity;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 import jakarta.persistence.Entity;
@@ -29,4 +30,5 @@ public class TransactionEntity {
     private String transactionType;
     private int transactionTypeCode;
     private UUID accountId;
+    private LocalDateTime date;
 }

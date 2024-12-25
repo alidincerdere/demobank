@@ -29,6 +29,7 @@ public class TransactionDataAdapter implements TransactionDataPort {
                 .amount(transaction.getAmount())
                 .transactionType(transaction.getType().name())
                 .transactionTypeCode(transaction.getType().ordinal())
+                .date(transaction.getDateTime())
                 .build();
         transactionEntity = transactionRepository.save(transactionEntity);
         return transactionEntity.getTransactionId();
@@ -42,6 +43,7 @@ public class TransactionDataAdapter implements TransactionDataPort {
                 .accountId(transactionEntity.getAccountId())
                 .amount(transactionEntity.getAmount())
                 .type(TransactionType.valueOf(transactionEntity.getTransactionType()))
+                .dateTime(transactionEntity.getDate())
                 .build();
         return transaction;
     }

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import com.demobank.account.account_api.domain.model.Account;
 import com.demobank.account.account_api.domain.model.Customer;
+import com.demobank.account.account_api.domain.port.TransactionServicePort;
 import com.demobank.account.account_api.domain.query.CustomerQuery;
 
 @Component
@@ -21,6 +22,7 @@ public class CustomerQueryHandler implements QueryHandler<CustomerQuery, Custome
 
     private CustomerService customerService;
     private AccountService accountService;
+    private TransactionServicePort transactionServicePort;
 
     @Override
     public CustomerQueryResponse handle(CustomerQuery query) {
