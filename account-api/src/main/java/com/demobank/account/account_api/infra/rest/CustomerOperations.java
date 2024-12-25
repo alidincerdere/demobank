@@ -15,7 +15,7 @@ import com.demobank.account.account_api.infra.dto.response.CustomerDto;
 public interface CustomerOperations {
 
     @PostMapping
-    public ResponseEntity<UUID> create(@RequestBody CustomerCreateRequestDto customerCreateRequestDto);
+    public ResponseEntity<CustomerDto> create(@RequestBody CustomerCreateRequestDto customerCreateRequestDto);
 
     @GetMapping("/{id}")
     public ResponseEntity<CustomerDto> retrieve(@PathVariable UUID id);

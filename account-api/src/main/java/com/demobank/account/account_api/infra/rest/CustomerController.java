@@ -30,10 +30,11 @@ public class CustomerController implements CustomerOperations {
     private ModelMapper modelMapper;
 
     @Override
-    public ResponseEntity<UUID> create(CustomerCreateRequestDto customerCreateRequestDto) {
+    public ResponseEntity<CustomerDto> create(CustomerCreateRequestDto customerCreateRequestDto) {
 
-        return ResponseEntity.ok().body(
-                createCustomerCommandHandler.handle(modelMapper.map(customerCreateRequestDto, CreateCustomer.class)));
+        UUID customerId = createCustomerCommandHandler.handle(modelMapper.map(customerCreateRequestDto, CreateCustomer.class));
+
+        return ResponseEntity.ok().body(CustomerDto.builder().id(customerId).build());
 
     }
 
