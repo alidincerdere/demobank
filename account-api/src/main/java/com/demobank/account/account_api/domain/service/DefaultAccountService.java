@@ -2,26 +2,35 @@ package com.demobank.account.account_api.domain.service;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import com.demobank.account.account_api.domain.exception.NoSuchCustomerExistsException;
 import com.demobank.account.account_api.domain.model.Account;
 import com.demobank.account.account_api.domain.model.AccountUpdateResult;
+import com.demobank.account.account_api.domain.model.Customer;
 import com.demobank.account.account_api.domain.port.AccountDataPort;
+import com.demobank.account.account_api.domain.port.CustomerDataPort;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class DefaultAccountService implements AccountService{
 
     private AccountDataPort accountDataPort;
+    private CustomerDataPort customerDataPort;
 
     @Override
     public UUID create(UUID customerId) {
        
+        Customer customer = customerDataPort.retrieveUser(customerId);
         Account account = Account.builder().amount(BigDecimal.ZERO).customerId(customerId).build();
         return accountDataPort.save(account);
     }
