@@ -1,6 +1,7 @@
 package com.demobank.account.account_api.infra.rest;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -12,6 +13,8 @@ import com.demobank.account.account_api.infra.dto.request.AccountUpdateRequestDt
 import com.demobank.account.account_api.infra.dto.response.AccountCreateResponseDto;
 import com.demobank.account.account_api.infra.dto.response.AccountUpdateResultDto;
 
+import jakarta.validation.Valid;
+
 
 @RequestMapping("/account")
 public interface AccountOperations {
@@ -20,7 +23,7 @@ public interface AccountOperations {
     public String home();
 
     @PostMapping
-    public ResponseEntity<AccountCreateResponseDto> create(@RequestBody AccountCreateRequestDto request);
+    public ResponseEntity<AccountCreateResponseDto> create(@Valid @RequestBody AccountCreateRequestDto request);
 
     @PutMapping("/deposit")
     public ResponseEntity<AccountUpdateResultDto> deposit(@RequestBody AccountUpdateRequestDto request);

@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demobank.account.account_api.domain.command.CreateAccount;
@@ -22,6 +23,7 @@ import lombok.AllArgsConstructor;
 
 @RestController
 @AllArgsConstructor
+@Validated
 public class AccountController implements AccountOperations {
 
     private DepositCommandHandler depositCommandHandler;
@@ -53,7 +55,7 @@ public class AccountController implements AccountOperations {
     @Override
     public ResponseEntity<AccountCreateResponseDto> create(AccountCreateRequestDto request) {
 
-        UUID accountId = createAccountCommandHandler.handle(CreateAccount.builder().customerId(request.getCustomerId())
+        UUID accountId = createAccountCommandHandler.handle(CreateAccount.builder().customerId(UUID.fromString(request.getCustomerId()))
                 .initialAmount(request.getInitialCredit()).build());
 
         AccountCreateResponseDto accountCreateResponseDto = AccountCreateResponseDto.builder().accountId(accountId).build();
