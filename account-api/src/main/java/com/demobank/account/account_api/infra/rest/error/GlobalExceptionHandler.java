@@ -1,12 +1,10 @@
 package com.demobank.account.account_api.infra.rest.error;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.context.request.WebRequest;
 
 import com.demobank.account.account_api.domain.exception.NoSuchCustomerExistsException;
 import com.demobank.account.account_api.infra.rest.AccountController;

@@ -10,7 +10,6 @@ import com.demobank.transaction.transaction_api.domain.model.TransactionResult;
 import com.demobank.transaction.transaction_api.domain.port.AccountServiceAccessPort;
 import com.demobank.transaction.transaction_api.infra.adapter.dto.AccountUpdateRequestDto;
 import com.demobank.transaction.transaction_api.infra.adapter.dto.AccountUpdateResultDto;
-import com.demobank.transaction.transaction_api.infra.rest.dto.response.TransactionResponseDto;
 
 import lombok.AllArgsConstructor;
 
