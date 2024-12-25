@@ -1,0 +1,135 @@
+{
+	"info": {
+		"_postman_id": "f3619cd7-9fe5-4e20-97fb-fe1f1a34f26c",
+		"name": "DemoBank",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1153804"
+	},
+	"item": [
+		{
+			"name": "createCustomer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Ali Dinçer\",\n    \"surName\": \"Dere\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/customer",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Customer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/customer/813fba9d-3327-4e24-a373-71c7f1f476c9",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"customer",
+						"813fba9d-3327-4e24-a373-71c7f1f476c9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createTransaction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\":15,\n    \"transactionType\":\"DEPOSIT\",\n    \"accountId\":\"b0b710fe-0d72-4776-8852-83651f39b162\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8082/transaction/process",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"transaction",
+						"process"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create account",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customerId\":\"d7dd2779-88be-4648-b0be-6e2a5bc46c5d\",\n    \"initialCredit\":\"10\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/account",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getTransactionListForAccount",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8082/transaction?accountId=4b117849-5a61-487c-9eed-8d8dc3ffc56c",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"transaction"
+					],
+					"query": [
+						{
+							"key": "accountId",
+							"value": "4b117849-5a61-487c-9eed-8d8dc3ffc56c"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
