@@ -15,3 +15,9 @@ server:
 account:
   service:
     api: http://account-api:8081
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
