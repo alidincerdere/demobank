@@ -65,9 +65,10 @@ curl --location 'localhost:8082/transaction/process' \
 }'
 ```
 
-you can also try with transaction type "WITHDRAW" as well
+you can also try with transaction type "WITHDRAW" as well.
+After doing several DEPOSIT and WITHDRAW operations you can apply STEP 3 to see transaction list and customer.
 
-
+if you apply withdraw more than the account amount you can see insufficient funds error as well.
 
 ## Architecture
 
